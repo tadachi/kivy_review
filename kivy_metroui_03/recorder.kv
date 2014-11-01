@@ -1,0 +1,48 @@
+#:import C kivy.utils.get_color_from_hex
+
+GridLayout:
+    padding: 15
+
+    Button:
+        background_color: C('#e74c3c')
+        text: ('[font=Modern Pictograms][size=120]e[/size][/font]\nNew recording')
+
+    GridLayout:
+        Button:
+            background_color: C('#2ecc71')
+            text: ('[font=Modern Pictograms][size=120]c[/size][/font]\n')
+
+        Button:
+            background_color: C('#2ecc71')
+            text: ('[font=Modern Pictograms][size=120]g[/size][/font]\n')
+
+        Button:
+            background_color: C('#2ecc71')
+            text: ('[font=Modern Pictograms][size=120]f[/size][/font]\n')
+
+        Button:
+            background_color: C('#16a085')
+            text: ('[font=Modern Pictograms][size=120]p[/size][/font]\n')
+
+    Button:
+        background_color: C('#e74c3c')
+        text: ('[font=Modern Pictograms][size=120]q[/size][/font]\nPlayback')
+
+    Button:
+        background_color: C('#95a5a6')
+        text: ('[font=Modern Pictograms][size=120]r[/size][/font]\nDelete')
+
+<GridLayout>:
+    cols: 2
+    spacing: 10
+    row_default_height:
+        (0.5 * (self.width - self.spacing[0]) -
+        self.padding[0])
+    row_force_default: True
+
+<Button>:
+    background_normal: 'button_normal.png'
+    background_down: 'button_down.png'
+    font_size: 16
+    halign: 'center'
+    markup: True

@@ -1,0 +1,53 @@
+#:import RiseInTransition kivy.uix.screenmanager.RiseInTransition
+
+ScreenManager:
+    Screen:
+        name: 'login'
+
+        BoxLayout:
+            # other UI controls -- not shown
+
+            Button:
+                text: 'Connect'
+                on_press: root.current = 'chatroom'
+
+            Button:  # Connect button, found on login screen
+                text: 'Connect'
+                on_press: app.connect()
+
+    Screen:
+        name: 'chatroom'
+
+        BoxLayout:
+            # other UI controls -- not shown
+
+            Button:
+                text: 'Disconnect'
+                on_press: root.current = 'login'
+
+            Button:  # Disconnect button, on chatroom screen
+                text: 'Disconnect'
+                on_press: app.disconnect()
+
+            TextInput:  # Message input, on chatroom screen
+                id: message
+                on_text_validate: app.send_msg()
+
+            Button:  # Message send button, on chatroom screen
+                text: 'Send'
+                on_press: app.send_msg()
+
+<ChatLabel@Label>:
+    text_size: (self.width, None)
+    halign: 'left'
+    valign: 'top'
+    size_hint: (1, None)
+    height: self.texture_size[1]
+
+ScrollView:
+    ChatLabel:
+        text: 'Long text with line\nbreaks'
+
+<TextInput>:
+    multiline: False
+    padding: [10, 0.5 * (self.height – self.line_height)]

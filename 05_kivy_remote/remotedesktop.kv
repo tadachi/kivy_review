@@ -1,0 +1,35 @@
+#:import ScrollEffect kivy.effects.scroll.ScrollEffect
+
+ScreenManager:
+    Screen:
+        name: 'login'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            y: root.height - self.height
+
+            Label:
+                text: 'Server IP:'
+                size_hint: (0.4, 1)
+
+            TextInput:
+                id: server
+                text: '192.168.1.3'  # put your server IP here
+
+            Button:
+                text: 'Connect'
+                on_press: app.connect()
+                size_hint: (0.4, 1)
+
+    Screen:
+        name: 'desktop'
+
+        ScrollView:
+            effect_cls: ScrollEffect
+
+            Image:
+                id: desktop
+                nocache: True
+                on_touch_down: app.send_click(args[1])
+                size: self.texture_size
+                size_hint: (None, None)
